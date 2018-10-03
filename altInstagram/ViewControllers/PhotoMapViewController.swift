@@ -51,27 +51,27 @@ class PhotoMapViewController: UIViewController, UIImagePickerControllerDelegate,
     }
     
     @IBAction func onSubmit(_ sender: Any) {
-//        var instagramPost = InstagramPosts()
-//        instagramPost.caption = postCaptionField.text ?? ""
-        InstagramPosts.postUserImage(image: postImage.image, withCaption: postCaptionField.text, withCompletion: { (success, error) in
-            if success {
-                print("The post was saved!")
-                self.performSegue(withIdentifier: "shareSegue", sender: nil)
-            } else if let error = error {
-                print("Problem saving message: \(error.localizedDescription)")
-            }
-        })
-//        instagramPost.media = InstagramPosts.getPFFileFromImage(image: postImage.image)!
-//        instagramPost.likesCount = 0
-//        instagramPost.author = PFUser.current()!
-//        instagramPost.saveInBackground { (success, error) in
+        let instagramPost = InstagramPosts()
+        instagramPost.caption = postCaptionField.text ?? ""
+//        InstagramPosts.postUserImage(image: postImage.image, withCaption: postCaptionField.text, withCompletion: { (success, error) in
 //            if success {
 //                print("The post was saved!")
 //                self.performSegue(withIdentifier: "shareSegue", sender: nil)
 //            } else if let error = error {
 //                print("Problem saving message: \(error.localizedDescription)")
 //            }
-//        }
+//        })
+        instagramPost.media = InstagramPosts.getPFFileFromImage(image: postImage.image)!
+        instagramPost.likesCount = 0
+        instagramPost.author = PFUser.current()!
+        instagramPost.saveInBackground { (success, error) in
+            if success {
+                print("The post was saved!")
+                self.performSegue(withIdentifier: "shareSegue", sender: nil)
+            } else if let error = error {
+                print("Problem saving message: \(error.localizedDescription)")
+            }
+        }
         
     }
     

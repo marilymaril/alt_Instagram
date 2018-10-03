@@ -589,6 +589,7 @@
         <image name="profile_tab" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="mKX-3Q-KyC"/>
         <segue reference="ALu-Jg-Tja"/>
     </inferredMetricsTieBreakers>
 </document>
