@@ -39,6 +39,17 @@ class PostCell: UITableViewCell {
                 } else {
                     self.likesNumber.text = String(0)
                 }
+                
+                if (post.object(forKey: "media") as? PFFile) != nil {
+                    post.media.getDataInBackground({ (imageData: Data?, error: Error?) -> Void in
+                        let image = UIImage(data: imageData!)
+                        if image != nil {
+                            self.postImage.image = image
+                        }
+                    })
+                } else {
+                    self.postImage.image = UIImage(named: "image_placeholder")
+                }
             }
         }
     }

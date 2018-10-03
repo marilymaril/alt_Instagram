@@ -20,7 +20,7 @@ class PhotoMapViewController: UIViewController, UIImagePickerControllerDelegate,
         vc.delegate = self
         vc.allowsEditing = true
         vc.sourceType = UIImagePickerControllerSourceType.photoLibrary
-        
+        postImage.image = UIImage(named: "image_placeholder")
         self.present(vc, animated: true, completion: nil)
     }
 
@@ -47,20 +47,8 @@ class PhotoMapViewController: UIViewController, UIImagePickerControllerDelegate,
     }
 
     @IBAction func onShare(_ sender: Any) {
-        self.performSegue(withIdentifier: "shareSegue", sender: nil)
-    }
-    
-    @IBAction func onSubmit(_ sender: Any) {
         let instagramPost = InstagramPosts()
         instagramPost.caption = postCaptionField.text ?? ""
-//        InstagramPosts.postUserImage(image: postImage.image, withCaption: postCaptionField.text, withCompletion: { (success, error) in
-//            if success {
-//                print("The post was saved!")
-//                self.performSegue(withIdentifier: "shareSegue", sender: nil)
-//            } else if let error = error {
-//                print("Problem saving message: \(error.localizedDescription)")
-//            }
-//        })
         instagramPost.media = InstagramPosts.getPFFileFromImage(image: postImage.image)!
         instagramPost.likesCount = 0
         instagramPost.author = PFUser.current()!
@@ -72,8 +60,6 @@ class PhotoMapViewController: UIViewController, UIImagePickerControllerDelegate,
                 print("Problem saving message: \(error.localizedDescription)")
             }
         }
-        
     }
-    
 
 }

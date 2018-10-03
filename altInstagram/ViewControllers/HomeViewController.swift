@@ -9,7 +9,7 @@
 import UIKit
 import Parse
 
-class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate {
     @IBOutlet weak var tableView: UITableView!
     
     var posts: [InstagramPosts]!
@@ -23,7 +23,12 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         getPosts()
         
-        Timer.scheduledTimer(timeInterval: 50, target: self, selector: #selector(self.onTimer), userInfo: nil, repeats: true)
+        Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(self.onTimer), userInfo: nil, repeats: true)
+        
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(refreshControlAction(_:)), for: UIControlEvents.valueChanged)
+        
+        tableView.insertSubview(refreshControl, at: 0)
     }
     
     func getPosts(){
@@ -48,13 +53,9 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
     }
     
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        let indexPath = tableView.indexPathForSelectedRow
-//        let detailViewController = segue.destination as! DetailViewController
-//
-//        let post = posts[(indexPath?.row)!]
-//        detailViewController.post = post
-//    }
+    @objc func refreshControlAction(_ refreshControl: UIRefreshControl) {
+            getPosts()
+    }
     
     @IBAction func onLogout(_ sender: Any) {
         self.performSegue(withIdentifier: "logoutSegue", sender: nil)
