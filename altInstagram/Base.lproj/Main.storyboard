@@ -228,6 +228,7 @@
                                             <outlet property="topUserName" destination="0tx-nX-2PH" id="2Yx-T2-dfx"/>
                                             <outlet property="userProfilePhoto" destination="nzv-v6-3YE" id="Bu7-my-dfv"/>
                                             <outlet property="usernameField" destination="IIz-to-lZv" id="eHR-lF-Daf"/>
+                                            <segue destination="ufe-9w-Cak" kind="show" identifier="detailSegue" id="0KK-JF-GRr"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -259,7 +260,6 @@
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="wUg-C9-0oB" id="g4V-di-bBX"/>
-                        <segue destination="ufe-9w-Cak" kind="show" id="dBh-1W-rsp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jfb-X0-Xq7" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -381,9 +381,11 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="dXJ-1W-agB"/>
                     </view>
+                    <navigationItem key="navigationItem" id="ZiV-DS-7yQ"/>
                     <connections>
                         <outlet property="likesNumbr" destination="vdA-mV-tlP" id="Bn8-dh-4ZQ"/>
                         <outlet property="postCaption" destination="nCO-Kg-K2R" id="w5J-Cw-eO8"/>
+                        <outlet property="postImage" destination="Y0d-UZ-Dqb" id="rzX-Ft-EJf"/>
                         <outlet property="timestampField" destination="vbD-Xl-T7Z" id="YnS-dE-CxN"/>
                         <outlet property="topUserName" destination="un4-A6-VeL" id="OfS-nK-qxz"/>
                         <outlet property="usernameField" destination="rzN-vy-QuI" id="uOy-Ji-FLI"/>
@@ -391,7 +393,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KiD-MT-Dup" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="872.79999999999995" y="1727.5862068965519"/>
+            <point key="canvasLocation" x="873" y="1728"/>
         </scene>
         <!--Photo Map View Controller-->
         <scene sceneID="mKz-Qw-UHz">
@@ -575,7 +577,6 @@
         <image name="profile_tab" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="mKX-3Q-KyC"/>
         <segue reference="ALu-Jg-Tja"/>
     </inferredMetricsTieBreakers>
 </document>

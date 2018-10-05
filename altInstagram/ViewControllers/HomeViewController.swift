@@ -44,7 +44,6 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
                 print("Successfully retrieved \(objects.count) posts.")
                 self.posts = objects as! [InstagramPosts]
                 if self.posts != nil && self.posts.count != 0 {
-                    print("Posts aren't null or 0")
                     self.tableView.reloadData()
                 }
             } else {
@@ -80,6 +79,20 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         cell.post = posts[indexPath.row]
         
         return cell
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "detailSegue" {
+            let indexPath = self.tableView.indexPathForSelectedRow
+            let detailViewController = segue.destination as! DetailViewController
+            
+            let post = self.posts[indexPath!.row]
+            detailViewController.post = post
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
     }
     
     @objc func onTimer() {
